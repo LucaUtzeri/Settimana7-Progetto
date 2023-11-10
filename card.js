@@ -14,15 +14,15 @@ window.onload = () => {
                     const myRow = document.getElementById("Library");
 
                     const col = document.createElement("div");
-                    col.className = "col-3";
+                    col.className = "col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 mt-5";
 
                     const card = document.createElement("div");
-                    card.className = "card w-100 col-sm-12 col-md-6 col-lg-4 col-xl-3 mt-5 border border-success";
-                    card.style = "height: 500px;"
+                    card.className = "card  border border-success";
+                    card.style = "height: 700px;"
 
                     const img = document.createElement("img");
                     img.className = "card-img-top h-50 object-fit-cover";
-                    img.src = prod.imgurl;
+                    img.src = prod.imageUrl;
 
                     const cardBody = document.createElement("div");
                     cardBody.className = "card-body";
@@ -31,15 +31,19 @@ window.onload = () => {
                     cardTitle.className = "card-title";
                     cardTitle.innerText = prod.name;
 
+                    const cardDesc = document.createElement("p");
+                    cardDesc.className = "card-text";
+                    cardDesc.innerText = prod.description;
+
                     const cardPrice = document.createElement("p");
                     cardPrice.className = "card-text";
-                    cardPrice.innerText = prod.description;
+                    cardPrice.innerText = prod.price + "€";
 
-                    const detailBtn = document.createElement("a");
-                    detailBtn.className = "btn btn-success";
-                    detailBtn.innerText = "View Details";
+                    const detailBtn = document.createElement("button");
+                    detailBtn.className = "btn btn-success ";
+                    detailBtn.innerHTML = `<a href="./detail.html?appId=${prod._id}" class="text-decoration-none text-light">Details</a>`
 
-                    const delBtn = document.createElement("a");
+                    const delBtn = document.createElement("button");
                     delBtn.className = "btn btn-outline-secondary";
                     delBtn.innerText = "Hide";
 
@@ -50,6 +54,7 @@ window.onload = () => {
 
 
                     cardBody.appendChild(cardTitle)
+                    cardBody.appendChild(cardDesc)
                     cardBody.appendChild(cardPrice)
                     cardBody.appendChild(detailBtn)
                     cardBody.appendChild(delBtn)
