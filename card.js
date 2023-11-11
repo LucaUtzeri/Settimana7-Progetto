@@ -1,4 +1,5 @@
 const URL = "https://striveschool-api.herokuapp.com/api/product"
+const param = new URLSearchParams(window.location.search).get("appId")
 
 window.onload = () => {
     fetch(URL, {
@@ -41,16 +42,11 @@ window.onload = () => {
 
                     const detailBtn = document.createElement("button");
                     detailBtn.className = "btn btn-success ";
-                    detailBtn.innerHTML = `<a href="./detail.html?appId=${prod._id}" class="text-decoration-none text-light">Details</a>`
+                    detailBtn.innerHTML = `<a href="./detail.html?appId=${prod._id}" class="text-decoration-none fw-bold text-light">Details</a>`
 
                     const delBtn = document.createElement("button");
-                    delBtn.className = "btn btn-outline-secondary";
-                    delBtn.innerText = "Hide";
-
-                    delBtn.onclick = function (e) {
-                        e.target.closest(".card").remove()
-                    }
-
+                    delBtn.className = "btn btn-outline-warning";
+                    delBtn.innerHTML = `<a href="./backoffice.html?appId=${+ prod._id}" class="text-decoration-none text-warning">Edit</a>`
 
 
                     cardBody.appendChild(cardTitle)

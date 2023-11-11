@@ -1,4 +1,35 @@
 const URL = "https://striveschool-api.herokuapp.com/api/product"
+const params = new URLSearchParams(window.location.search).get("appId")
+const editId = params.get("appId")
+
+const editURL = editId ? "https://striveschool-api.herokuapp.com/api/product/" + editId : "https://striveschool-api.herokuapp.com/api/product/"
+const method = editId ? "PUT" : "POST"
+
+
+window.onload = () => {
+    if (editURL) {
+
+        fetch(editURL)// fetch di tipo GET su endpoint con id incorporato
+            .then(resp => resp.json())
+            .then(resourceObj => {
+
+                const { name, imageUrl, description, price } = resourceObj
+
+                document.getElementById("name").value = name
+                document.getElementById("imageUrl").value = imageUrl
+                document.getElementById("description").value = description
+                document.getElementById("price").value = price
+
+            })
+
+        const submitBtn = document.getElementById("confirmBtn")
+        submitBtn.innerText = "Edit"
+        submitBtn.classList.remove("btn-success")
+        submitBtn.classList.add("btn-warning")
+        const delBtn = document.getElementById("delBtn")
+        delBtn.classList.remove("d-none")
+    }
+}
 
 let myForm = document.getElementById("myForm");
 
