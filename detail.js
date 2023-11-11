@@ -11,20 +11,22 @@ window.onload = () => {
 
         .then(resp => resp.json())
         .then(prod => {
-            if (prod._id) {
-                const row = document.getElementById("row")
 
-                const col = document.createElement("div")
-                col.className = "col-12"
-                col.innerHTML = `<div>
-                                    <img src=${prod.imageUrl} alt=${prod.description}>
-                                </div>`
+            const row = document.getElementById("detailImg")
 
-                row.appendChild(col)
+            const col = document.createElement("div")
+            col.className = "col-12"
+            col.innerHTML = `<div class="d-flex justify-content-center mb-5">
+            <img src=${prod.imageUrl} alt=${prod.description} style="width: 60%; border-radius: 50px;">
+            </div>`
+            const colTitle = document.createElement("div")
+            col.className = "col-12"
+            colTitle.innerHTML = `<h1 class="bg-dark p-5 text-start" style="border: solid 2px white; border-radius: 10px">${prod.description}</h1>`
 
-            }
+            row.appendChild(col)
+            row.appendChild(colTitle)
         })
         .catch(err => {
             console.log(err)
         })
-}
+} 
